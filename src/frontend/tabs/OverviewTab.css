@@ -1,0 +1,84 @@
+/* Ensures the page uses the full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main container */
+.main-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;  /* full screen height */
+  width: 100%;
+  background: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+/* Header always at top */
+.main-screen-header {
+  padding: 16px 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e2e2;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Main area: left tab list + tab content */
+.main-screen-tabview {
+  flex: 1;
+  display: flex;
+  overflow: hidden; /* prevents children from breaking layout */
+}
+
+/* Left sidebar for tabs */
+.tab-list-view {
+  width: 220px;
+  min-width: 200px;
+  max-width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #e2e2e2;
+  padding: 12px 0;
+  overflow-y: auto;
+}
+
+/* Each tab entry */
+.tab-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.15s;
+}
+
+.tab-list-item:hover {
+  background: #f0f0f0;
+}
+
+.tab-list-item.active {
+  background: #e8e8e8;
+  font-weight: 600;
+}
+
+/* Icon sizing (MUI icons scale automatically) */
+.tab-list-item svg {
+  font-size: 20px;
+}
+
+/* Content area for active tab */
+.main-screen-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* Footer always at bottom */
+.main-screen-footer {
+  padding: 12px 24px;
+  border-top: 1px solid #e2e2e2;
+  background: #ffffff;
+  font-size: 0.9rem;
+  text-align: center;
+}

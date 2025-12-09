@@ -8,6 +8,7 @@
   background: var(--primary-color);
   color: var(--text-color);
 
+  border: 1px solid var(--shade-color);
   user-select: none;
   transition: background 0.05s;
 }
@@ -24,7 +25,8 @@
 .tab-card-icon {
   display: flex;
   align-items: center;
-  font-size: 18px; /* icon size */
+  font-size: 18px;
+  /* icon size */
 }
 
 .tab-card-name {

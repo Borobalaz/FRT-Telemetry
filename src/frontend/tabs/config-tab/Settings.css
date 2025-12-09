@@ -1,0 +1,28 @@
+.settings {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .setting-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .setting-label {
+    width: 160px;
+    font-weight: bold;
+  }
+
+  .setting-input {
+    padding: 4px 6px;
+    font-size: 14px;
+  }
+}

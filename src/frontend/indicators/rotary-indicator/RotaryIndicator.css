@@ -1,0 +1,77 @@
+.rotary-indicator {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: var(--text-color);
+  user-select: none;
+  width: 300px;
+  height: 300px;
+
+  .rotary-indicator svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ticks and labels */
+  .rotary-tick {
+    stroke: color-mix(in srgb, var(--shade-color) 70%, transparent);
+    stroke-width: 1px;
+    stroke-linecap: round;
+  }
+
+  .rotary-label {
+    font-size: 20px;
+    fill: var(--text-color);
+    pointer-events: none;
+  }
+
+  /* faint arc */
+  .rotary-arc {
+    stroke: var(--shade-color);
+    stroke-width: 1px;
+    stroke-linecap: round;
+    opacity: 0.14;
+    fill: none;
+  }
+
+  /* arm transition for smooth motion */
+  .rotary-arm {
+    stroke: var(--primary-color);
+    stroke-width: 3px;
+    stroke-linecap: round;
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.15));
+  }
+
+  /* center hub */
+  .rotary-hub {
+    fill: var(--primary-color);
+    stroke: var(--secondary-color);
+    stroke-width: 2;
+  }
+
+  /* caption below gauge */
+  .rotary-caption {
+    position: relative;
+    top: -20%;
+    text-align: center;
+  }
+
+  .rotary-caption-title {
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+
+  .rotary-caption-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  /* optional background circle for layout */
+  .rotary-background {
+    fill: transparent;
+  }
+}

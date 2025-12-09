@@ -1,9 +1,10 @@
 import HomeIcon from '@mui/icons-material/Home';
-import { OverviewTab } from './OverviewTab';
+import { OverviewTab } from './overview-tab/OverviewTab';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
 import BathtubIcon from '@mui/icons-material/Bathtub';
-import { MCUTab } from './MCUTab';
-
+import { MCUTab } from './mcu-tab/MCUTab';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { ConfigTab } from './config-tab/ConfigTab';
 
 export interface Tab {
   name: string;
@@ -18,15 +19,17 @@ class TabManager {
   tabs: Tab[];
   activeTab: Tab | null;
 
-    // Event subscribers
+  // Event subscribers
   private listeners = {
     activeTabChange: [] as Listener[],
   };
 
   constructor() {
     this.tabs = [
+      { name: "Config", icon: SettingsIcon, component: ConfigTab },
       { name: "Overview", icon: HomeIcon, component: OverviewTab },
       { name: "MCU", icon: TwoWheelerIcon, component: MCUTab },
+      { name: "Overview2", icon: HomeIcon, component: OverviewTab },
 
     ];
 

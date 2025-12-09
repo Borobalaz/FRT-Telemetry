@@ -1,0 +1,59 @@
+/* Hidden real file input */
+.dbc-input-hidden {
+  display: none;
+}
+
+/* Drag + Drop Zone */
+.dbc-dropzone {
+  border: 2px dashed #3a3a3a;
+  background: #1b1b1b;
+  padding: 22px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+.dbc-dropzone:hover {
+  background: #242424;
+  border-color: #555;
+}
+
+.dbc-dropzone.drag-active {
+  background: #303030;
+  border-color: #888;
+  color: white;
+}
+
+/* Loaded DBC list */
+.loaded-dbc-list ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.dbc-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-color);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  color: var(--text-color);
+}
+
+.dbc-delete-btn {
+  background: var(--primary-color);
+  border: none;
+  color: var(--text-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dbc-delete-btn:hover {
+  background: #cc4444;
+}

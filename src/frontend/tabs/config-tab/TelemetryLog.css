@@ -1,0 +1,93 @@
+.telemetry-log {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 100%;
+  padding: 8px;
+  font-family: monospace;
+  background: #1c1c1c;
+  color: white;
+  border-radius: 8px;
+}
+
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.log-filters {
+  display: flex;
+  gap: 8px;
+}
+
+.log-filter input {
+  margin-right: 4px;
+}
+
+.log-entries {
+  flex: 1;
+  overflow-y: auto;
+  background: #111;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #333;
+}
+
+.log-entry {
+  display: flex;
+  gap: 10px;
+  padding: 4px 0;
+  border-bottom: 1px solid #222;
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-entry .log-timestamp {
+  color: #888;
+  width: 85px;
+}
+
+.log-entry .log-level {
+  width: 70px;
+  font-weight: bold;
+}
+
+.log-entry.debug .log-level {
+  color: #68afff;
+}
+
+.log-entry.info .log-level {
+  color: #6fd96f;
+}
+
+.log-entry.warning .log-level {
+  color: #e6cd65;
+}
+
+.log-entry.error .log-level {
+  color: #ff6b6b;
+}
+
+.log-empty {
+  color: #666;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Optional: scrollbar styling for desktop feel */
+.log-entries::-webkit-scrollbar {
+  width: 6px;
+}
+
+.log-entries::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--shade-color) 50%, transparent);
+  border-radius: 3px;
+}
+
+.log-entries::-webkit-scrollbar-track {
+  background: transparent;
+}

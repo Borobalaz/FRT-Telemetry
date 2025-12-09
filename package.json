@@ -11,6 +11,9 @@
 		"@emotion/styled": "^11.14.1",
 		"@mui/icons-material": "^7.3.6",
 		"@mui/material": "^7.3.6",
+		"@passoa/dbcparser": "^1.0.7",
+		"buffer": "^6.0.3",
+		"candied": "^2.2.0",
 		"preact": "^10.26.9"
 	},
 	"devDependencies": {

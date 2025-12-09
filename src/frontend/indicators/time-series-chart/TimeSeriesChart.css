@@ -1,0 +1,145 @@
+.time-series-chart {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  color: #ccc;
+  margin: 10px 0;
+
+  .grid-line {
+    stroke: #888;
+    stroke-opacity: 0.25;
+    stroke-width: 1;
+  }
+
+  .axis {
+    stroke: #ddd;
+    stroke-width: 2;
+  }
+
+  .axis-tick {
+    stroke: #aaa;
+    stroke-width: 1;
+  }
+
+  .chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-right: 30px;
+
+    .MuiSlider-root {
+      width: 50%;
+    }
+
+    .MuiSlider-thumb {
+      background-color: #fff;
+      border: 2px solid var(--primary-color);
+      width: 16px;
+      height: 16px;
+    }
+
+    .MuiSlider-rail {
+      opacity: 0.3;
+      background-color: var(--primary-color);
+    }
+
+    .MuiSlider-track {
+      border: none;
+      background-color: var(--primary-color);
+
+    }
+
+    /* Optional: hover effect */
+    .MuiSlider-thumb:hover {
+      box-shadow: 0 0 0 8px rgba(74, 175, 255, 0.16);
+    }
+  }
+
+  .chart-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    color: var(--text-color);
+    min-width: none;
+  }
+
+  .chart-svg {
+    background: var(--bg-color);
+    border-radius: 6px;
+  }
+
+  .axis {
+    stroke: #444;
+    stroke-width: 1.5;
+  }
+
+  .chart-line {
+    fill: none;
+    stroke: #4af;
+    stroke-width: 2;
+  }
+
+  .chart-label {
+    font-size: 15px;
+    fill: var(--text-color);
+  }
+
+  .chart-placeholder {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+  }
+
+  /* TimeSeriesChart.css */
+
+  /* Legend container */
+  .chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    gap: 10px;
+    font-family: sans-serif;
+    font-size: 14px;
+  }
+
+  /* Each legend item */
+  .legend-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s, transform 0.1s;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* Hover effect */
+  .legend-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: scale(1.05);
+  }
+
+  /* Color box in legend */
+  .legend-color {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    flex-shrink: 0;
+  }
+
+  /* Active/inactive states */
+  .legend-item.active {
+    opacity: 1;
+  }
+
+  .legend-item.inactive {
+    opacity: 0.4;
+  }
+
+}

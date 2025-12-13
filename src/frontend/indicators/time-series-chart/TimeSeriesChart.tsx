@@ -4,7 +4,8 @@ import {
   computeNormalizedPoints,
   computeTimeTicks,
   pointsToSvg,
-  computeHorizontalGridLines
+  computeHorizontalGridLines,
+  downsamplePoints
 } from "./ChartHelpers";
 
 import { ChartAxes } from "./ChartAxes";
@@ -22,6 +23,7 @@ interface TimeSeriesChartProps {
   yRange?: [number, number];
   colors?: string[];
   height?: number;
+  downsampledSignals?: string[]; // Array of signal names to downsample
 
   paddingLeft?: number;
   paddingRight?: number;
@@ -36,6 +38,7 @@ export function TimeSeriesChart({
   yRange = [-100, 100],
   colors,
   height = 300,
+  downsampledSignals = [],
 
   paddingLeft = 70,
   paddingRight = 20,
@@ -177,10 +180,13 @@ export function TimeSeriesChart({
             chartTime
           );
 
+          // Apply downsampling if enabled for this signal
+          const finalPoints = downsampledSignals.includes(sig) ? downsamplePoints(points, 200) : points;
+
           return (
             <polyline
               key={sig}
-              points={pointsToSvg(points)}
+              points={pointsToSvg(finalPoints)}
               className="chart-line"
               style={{ stroke: colorsToUse[idx % colorsToUse.length] }}
             />

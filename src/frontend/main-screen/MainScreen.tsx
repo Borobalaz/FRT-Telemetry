@@ -30,6 +30,7 @@ export function MainScreen() {
     const interval = setInterval(() => {
       canSignals.set("APPS_position", 50 * (Math.sin(Date.now() / 1000) + 1));
       canSignals.set("MCU_state", (canSignals.get("MCU_state") + 1) % 4);
+      canSignals.set("SC_ENDLINE", !(canSignals.get("SC_ENDLINE")));
     }, 100); // update every 50ms
     return () => clearInterval(interval);
   }, []);

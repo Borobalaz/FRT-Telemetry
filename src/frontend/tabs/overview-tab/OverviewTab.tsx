@@ -50,9 +50,13 @@ export function OverviewTab() {
       </Grid>
       <Section title="Charts">
         <TimeSeriesChart
+          signalNames={["SC_ENDLINE"]}
+          yRange={[-1, 2]}
+          title="Very interesting chart"
+          downsampledSignals={["APPS_position"]} />
+        <TimeSeriesChart
           signalNames={["APPS_position", "MCU_state"]}
-          title="Very interesting chart" />
-        <TimeSeriesChart signalNames={["APPS_position", "MCU_state"]} />
+          downsampledSignals={["APPS_position"]} />
       </Section>
       <Section title="Charts">
         <TimeSeriesChart signalNames={["APPS_position", "MCU_state"]} />

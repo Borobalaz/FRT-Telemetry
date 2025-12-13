@@ -1,3 +1,4 @@
+import { appLogger } from "../app-logger/AppLogger";
 import { appOptions } from "../options/Options";
 import { HistoryEntry } from "./SignalHistory";
 
@@ -14,6 +15,15 @@ class CANSignals<T extends Record<string, any>> {
   subscribe<K extends keyof T>(key: K, callback: Listener<T[K]>): () => void {
     if (!this.listeners.has(key)) this.listeners.set(key, new Set());
     this.listeners.get(key)!.add(callback);
+
+    // Debug: log listener count
+    const count = this.listeners.get(key)!.size;
+    console.warn(`${count} listeners`);
+
+    if (count > 10) {
+      appLogger.warning(`⚠️ High listener count for signal "${String(key)}": ${count} listeners`);
+      console.warn(`⚠️ High listener count for signal "${String(key)}": ${count} listeners`);
+    }
 
     return () => {
       this.listeners.get(key)!.delete(callback);
@@ -56,6 +66,15 @@ class CANSignals<T extends Record<string, any>> {
     if (keyListeners) {
       keyListeners.forEach((cb) => cb(value));
     }
+  }
+
+  // Debug helper: get listener counts
+  getListenerCounts(): Record<string, number> {
+    const counts: Record<string, number> = {};
+    this.listeners.forEach((set, key) => {
+      counts[String(key)] = set.size;
+    });
+    return counts;
   }
 }
 

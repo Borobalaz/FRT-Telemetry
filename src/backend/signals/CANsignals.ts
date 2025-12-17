@@ -22,7 +22,6 @@ class CANSignals<T extends Record<string, any>> {
 
     if (count > 10) {
       appLogger.warning(`⚠️ High listener count for signal "${String(key)}": ${count} listeners`);
-      console.warn(`⚠️ High listener count for signal "${String(key)}": ${count} listeners`);
     }
 
     return () => {

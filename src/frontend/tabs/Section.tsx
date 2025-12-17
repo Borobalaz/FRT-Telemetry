@@ -13,6 +13,13 @@ export function Section({ children, title = "", orientation = "horizontal", styl
   return (
     <div style={style}>
       {title !== "" && <TabSectionTitle text={title} />}
+      <style>{`
+        @media (max-width: 1000px) {
+          .section {
+            flex-direction: column !important;
+          }
+        }
+      `}</style>
       <div
         className="section"
         style={{

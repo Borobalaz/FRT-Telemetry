@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import "./TabListView.css";
+import "../main-screen/Mainscreen.css";
 import { Tab, tabManager } from "./TabManager";
 import { TabCard } from "./TabCard";
 

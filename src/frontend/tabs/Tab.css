@@ -19,4 +19,20 @@
   font-size: x-large;
   border-bottom: 1px solid var(--shade-color);
   width: 100%;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.grid {
+  display: grid;
+
+  /* max screen width */
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr) !important;
+
+    display: flex;
+    flex-direction: column;
+  }
 }

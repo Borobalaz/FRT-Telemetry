@@ -15,6 +15,7 @@ import { ChartLegend } from "./ChartLegend";
 import "./TimeSeriesChart.css";
 import { useTick } from "../../../backend/time/UseTick";
 import { Slider } from "@mui/material";
+import { SignalLine } from "./SignalLine";
 
 interface TimeSeriesChartProps {
   signalNames: string[];
@@ -164,36 +165,28 @@ export function TimeSeriesChart({
           yMax={yRangeState[1]}
           timeTicks={timeTicks}
         />
-
-        {histories.map(({ sig, hist }, idx) => {
+        {signalNames.map((sig, idx) => {
           if (!activeSignals[sig]) return null;
 
-          const points = computeNormalizedPoints(
-            hist,
-            drawableWidth,
-            height - paddingTop - paddingBottom,
-            paddingLeft,
-            paddingTop,
-            yRangeState[0],
-            yRangeState[1],
-            displayTime,
-            chartTime
-          );
-
-          // Apply downsampling if enabled for this signal
-          const finalPoints = downsampledSignals.includes(sig) ? downsamplePoints(points, 200) : points;
-
           return (
-            <polyline
+            <SignalLine
               key={sig}
-              points={pointsToSvg(finalPoints)}
-              className="chart-line"
-              style={{ stroke: colorsToUse[idx % colorsToUse.length] }}
+              sig={sig}
+              color={colorsToUse[idx % colorsToUse.length]}
+              displayTime={displayTime}
+              chartTime={chartTime}
+              drawableWidth={drawableWidth}
+              height={height - paddingTop - paddingBottom}
+              paddingLeft={paddingLeft}
+              paddingTop={paddingTop}
+              yMin={yRangeState[0]}
+              yMax={yRangeState[1]}
+              downsample={downsampledSignals.includes(sig)}
             />
           );
         })}
-      </svg>
 
+      </svg>
       <ChartLegend
         signalNames={signalNames}
         colors={colorsToUse}

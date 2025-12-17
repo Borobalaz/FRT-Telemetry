@@ -14,14 +14,14 @@ export function Settings() {
   }, []);
 
   // Handle updates
-  const update = <K extends keyof OptionFields>(key: K, value: OptionFields[K]) => {
+  const update = <K extends keyof OptionFields>(key: K, value: any) => {
     appOptions.setOption(key, value);
   };
 
   return (
     <div className="settings">
       <div className="settings-list">
-        {Object.entries(options).map(([key, value]) => {
+        {Object.entries(options).map(([key, option]) => {
           const typedKey = key as keyof OptionFields;
 
           return (
@@ -29,28 +29,28 @@ export function Settings() {
               <label className="setting-label">{key}</label>
 
               {/* Pick input type based on field type */}
-              {typeof value === "number" && (
+              {typeof option.value === "number" && (
                 <input
                   className="setting-input"
                   type="number"
-                  value={value}
-                  onInput={(e) => update(typedKey, Number((e.target as HTMLInputElement).value))}
+                  value={option.value}
+                  onInput={(e) => update(typedKey, (e.target as HTMLInputElement).valueAsNumber)}
                 />
               )}
 
-              {typeof value === "boolean" && (
+              {typeof option.value === "boolean" && (
                 <input
                   type="checkbox"
-                  checked={value}
+                  checked={option.value}
                   onInput={(e) => update(typedKey, (e.target as HTMLInputElement).checked)}
                 />
               )}
 
-              {typeof value === "string" && (
+              {typeof option.value === "string" && (
                 <input
                   className="setting-input"
                   type="text"
-                  value={value}
+                  value={option.value}
                   onInput={(e) => update(typedKey, (e.target as HTMLInputElement).value)}
                 />
               )}

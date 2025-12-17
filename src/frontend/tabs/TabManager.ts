@@ -30,6 +30,8 @@ class TabManager {
       { name: "Overview", icon: HomeIcon, component: OverviewTab },
       { name: "MCU", icon: TwoWheelerIcon, component: MCUTab },
       { name: "Overview2", icon: HomeIcon, component: OverviewTab },
+      { name: "Overview3", icon: HomeIcon, component: OverviewTab },
+      { name: "Overview4", icon: HomeIcon, component: OverviewTab },
 
     ];
 

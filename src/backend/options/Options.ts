@@ -1,10 +1,15 @@
 import { appLogger } from "../app-logger/AppLogger";
 
+type OptionValue<T> = {
+  value: T;
+  min?: T;
+  max?: T;
+};
 export type OptionFields = {
-  refreshInterval: number;
-  maxHistory: number;
-  stringOption: string,
-  themeDark: boolean;
+  refreshInterval: OptionValue<number>;
+  maxHistory: OptionValue<number>;
+  stringOption: OptionValue<string>,
+  themeDark: OptionValue<boolean>;
   // maxChartTime: number;
 };
 
@@ -12,22 +17,24 @@ type Listener = () => void;
 
 export class Options {
   private fields: OptionFields = {
-    refreshInterval: 100,
-    maxHistory: 10_000,
-    themeDark: true,
-    stringOption: "ASD",
+    refreshInterval: {value: 50, min: 20, max: 1000 },
+    maxHistory: {value: 1000, min: 100, max: 10000 },
+    themeDark: {value: true},
+    stringOption: {value: "ASD"},
   };
 
   private listeners: Set<Listener> = new Set();
 
   /** Get a single option */
-  getOption<K extends keyof OptionFields>(key: K): OptionFields[K] {
-    return this.fields[key];
+  getOption<K extends keyof OptionFields>(key: K): any {
+    return this.fields[key].value;
   }
 
   /** Set an option (type-safe) */
-  setOption<K extends keyof OptionFields>(key: K, value: OptionFields[K]) {
-    this.fields[key] = value;
+  setOption<K extends keyof OptionFields>(key: K, value: any) {
+    if(this.fields[key].min && this.fields[key].min > value) return;
+    if(this.fields[key].max && this.fields[key].max < value) return;
+    this.fields[key].value = value;
     this.notify();
     appLogger.info(`${key} option changed to ${value}`);
   }

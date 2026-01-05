@@ -1,6 +1,7 @@
+import { useRef } from "preact/hooks";
 import { computeYTicks, TimeTick } from "./ChartHelpers";
+import { useRAF } from "../../../backend/time/UseRAF";
 
-// ChartAxes.tsx
 interface ChartAxesProps {
   width: number;
   height: number;
@@ -11,7 +12,6 @@ interface ChartAxesProps {
   yMin: number;
   yMax: number;
   timeTicks: TimeTick[];
-  numYTicks?: number;
 }
 
 export function ChartAxes({
@@ -24,74 +24,90 @@ export function ChartAxes({
   yMin,
   yMax,
   timeTicks,
-  numYTicks = 5
 }: ChartAxesProps) {
-  const yTicks = computeYTicks(yMin, yMax, numYTicks);
+  const groupRef = useRef<SVGGElement>(null);
+  const numTicks = 5;
+
+  // Refs for tick text elements
+  const yTickTexts = Array.from({ length: numTicks }, () => useRef<SVGTextElement>(null!));
+  const xTickTexts = Array.from({ length: numTicks }, () => useRef<SVGTextElement>(null!));
+
+  // Update tick labels every animation frame
+  useRAF(() => {
+    const yTicks = computeYTicks(yMin, yMax, numTicks);
+
+    // Y-axis ticks
+    yTicks.forEach((tick, idx) => {
+      const y = paddingTop + ((yMax - tick.value) / (yMax - yMin)) * (height - paddingTop - paddingBottom);
+      const text = yTickTexts[idx].current;
+      if (text) {
+        text.setAttribute("x", (paddingLeft - 8).toString());
+        text.setAttribute("y", (y + 4).toString());
+        text.textContent = tick.value.toFixed(1);
+      }
+    });
+
+    // X-axis ticks: pick 5 evenly spaced timeTicks
+    if (timeTicks.length) {
+      const step = Math.floor(timeTicks.length / numTicks);
+      for (let i = 0; i < numTicks; i++) {
+        const idx = Math.min(i * step, timeTicks.length - 1);
+        const t = timeTicks[idx];
+        const text = xTickTexts[i].current;
+        if (text) {
+          text.setAttribute("x", t.x.toString());
+          text.setAttribute("y", (height - paddingBottom + 18).toString());
+          text.textContent = (t.timestamp / 1000).toFixed(1) + "s";
+        }
+      }
+    }
+  });
+
   return (
-    <>
-      {/* Axes lines */}
+    <g ref={groupRef}>
+      {/* Y ticks */}
+      {Array.from({ length: numTicks }, (_, i) => (
+        <g key={`y-${i}`}>
+          <line
+            x1={paddingLeft - 4}
+            x2={paddingLeft}
+            y1={0} // lines are static; label positions handled imperatively
+            y2={0}
+            class="axis-tick"
+          />
+          <text ref={yTickTexts[i]} class="chart-label" text-anchor="end" />
+        </g>
+      ))}
+
+      {/* X ticks */}
+      {Array.from({ length: numTicks }, (_, i) => (
+        <g key={`x-${i}`}>
+          <line
+            x1={0} // line position static; tick label moves imperatively
+            x2={0}
+            y1={height - paddingBottom}
+            y2={height - paddingBottom + 5}
+            class="axis-tick"
+          />
+          <text ref={xTickTexts[i]} class="chart-label" text-anchor="middle" />
+        </g>
+      ))}
+
+      {/* Axis lines */}
       <line
         x1={paddingLeft}
         y1={height - paddingBottom}
         x2={width - paddingRight}
         y2={height - paddingBottom}
-        className="axis"
+        class="axis"
       />
       <line
         x1={paddingLeft}
         y1={paddingTop}
         x2={paddingLeft}
         y2={height - paddingBottom}
-        className="axis"
+        class="axis"
       />
-
-      {/* Y-axis ticks and labels */}
-      {yTicks.map((tick, idx) => {
-        // Map tick.value to SVG Y coordinate
-        const y = paddingTop + ((yMax - tick.value) / (yMax - yMin)) * (height - paddingTop - paddingBottom);
-        return (
-          <g key={idx}>
-            <line
-              x1={paddingLeft - 4}
-              x2={paddingLeft}
-              y1={y}
-              y2={y}
-              className="axis-tick"
-            />
-            <text
-              x={paddingLeft - 8}
-              y={y + 4} // vertical center adjustment
-              textAnchor="end"
-              className="chart-label"
-            >
-              {tick.value.toFixed(1)}
-            </text>
-          </g>
-        );
-      })}
-
-      {/* Time axis (X) */}
-      {timeTicks.map((t, idx) => (
-        <g key={idx}>
-          <line
-            x1={t.x}
-            y1={height - paddingBottom}
-            x2={t.x}
-            y2={height - paddingBottom + 5}
-            className="axis-tick"
-          />
-          {idx > 0 && (
-            <text
-              x={t.x}
-              y={height - paddingBottom + 18}
-              textAnchor="middle"
-              className="chart-label"
-            >
-              {(t.timestamp / 1000).toFixed(1)}s
-            </text>
-          )}
-        </g>
-      ))}
-    </>
+    </g>
   );
 }

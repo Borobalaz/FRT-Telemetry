@@ -78,12 +78,6 @@ export function TimeSeriesChart({
     return currentTime - (100 - sliderValue) * 600; // freeze/rewind
   }, [currentTime, sliderValue]);
 
-  // Collect histories for all signals
-  const histories = signalNames.map((sig) => ({
-    sig,
-    hist: useCANSignalHistory(sig, displayTime - chartTime, displayTime)
-  }));
-
   // Y-axis zoom
   const [yRangeState, setYRange] = useState<[number, number]>(yRange);
   useEffect(() => {
@@ -153,18 +147,6 @@ export function TimeSeriesChart({
         viewBox={`0 0 ${chartWidth} ${height + paddingBottom}`}
         className="chart-svg"
       >
-        <ChartGrid horizontalLines={gridLines} />
-        <ChartAxes
-          width={chartWidth}
-          height={height}
-          paddingLeft={paddingLeft}
-          paddingRight={paddingRight}
-          paddingTop={paddingTop}
-          paddingBottom={paddingBottom}
-          yMin={yRangeState[0]}
-          yMax={yRangeState[1]}
-          timeTicks={timeTicks}
-        />
         {signalNames.map((sig, idx) => {
           if (!activeSignals[sig]) return null;
 
@@ -187,12 +169,7 @@ export function TimeSeriesChart({
         })}
 
       </svg>
-      <ChartLegend
-        signalNames={signalNames}
-        colors={colorsToUse}
-        activeSignals={activeSignals}
-        onToggleSignal={toggleSignal}
-      />
     </div>
   );
 }
+

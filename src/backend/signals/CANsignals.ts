@@ -16,10 +16,7 @@ class CANSignals<T extends Record<string, any>> {
     if (!this.listeners.has(key)) this.listeners.set(key, new Set());
     this.listeners.get(key)!.add(callback);
 
-    // Debug: log listener count
     const count = this.listeners.get(key)!.size;
-    console.warn(`${count} listeners`);
-
     if (count > 10) {
       appLogger.warning(`⚠️ High listener count for signal "${String(key)}": ${count} listeners`);
     }

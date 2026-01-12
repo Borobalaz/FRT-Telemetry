@@ -26,6 +26,9 @@ export function MainScreen() {
     canSignals.set("MCU_state", 2);
     canSignals.set("SC_ENDLINE", 1);
     canSignals.set("APPS_position", 0);
+    canSignals.enableHistoryForSignal("APPS_position");
+    canSignals.enableHistoryForSignal("MCU_state");
+    canSignals.enableHistoryForSignal("SC_ENDLINE");
 
     const interval = setInterval(() => {
       canSignals.set("APPS_position", 50 * (Math.sin(Date.now() / 1000) + 1));

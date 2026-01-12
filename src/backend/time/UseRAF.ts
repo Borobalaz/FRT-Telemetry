@@ -1,4 +1,4 @@
-import { useEffect } from "preact/hooks";
+import { useEffect, useRef } from "preact/hooks";
 import { rafTicker } from "./RAFTicker";
 
 /**
@@ -7,15 +7,13 @@ import { rafTicker } from "./RAFTicker";
  * Automatically subscribes/unsubscribes to the global RAF loop.
  */
 export function useRAF(callback: () => void) {
-  useEffect(() => {
-    // Subscribe to the global RAF ticker
-    const unsubscribe = rafTicker.subscribe(() => {
-      callback();
-    });
+  const cbRef = useRef(callback);
+  cbRef.current = callback; // always point to latest callback
 
-    // Cleanup on unmount
-    return () => {
-      unsubscribe();
-    };
-  }, [callback]);
+  useEffect(() => {
+    const unsubscribe = rafTicker.subscribe(() => {
+      cbRef.current();
+    });
+    return unsubscribe; // only one subscription
+  }, []); // no dependencies
 }

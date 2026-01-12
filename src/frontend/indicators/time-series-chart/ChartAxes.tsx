@@ -68,13 +68,6 @@ export function ChartAxes({
       {/* Y ticks */}
       {Array.from({ length: numTicks }, (_, i) => (
         <g key={`y-${i}`}>
-          <line
-            x1={paddingLeft - 4}
-            x2={paddingLeft}
-            y1={0} // lines are static; label positions handled imperatively
-            y2={0}
-            class="axis-tick"
-          />
           <text ref={yTickTexts[i]} class="chart-label" text-anchor="end" />
         </g>
       ))}
@@ -82,13 +75,6 @@ export function ChartAxes({
       {/* X ticks */}
       {Array.from({ length: numTicks }, (_, i) => (
         <g key={`x-${i}`}>
-          <line
-            x1={0} // line position static; tick label moves imperatively
-            x2={0}
-            y1={height - paddingBottom}
-            y2={height - paddingBottom + 5}
-            class="axis-tick"
-          />
           <text ref={xTickTexts[i]} class="chart-label" text-anchor="middle" />
         </g>
       ))}

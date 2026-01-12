@@ -72,8 +72,7 @@ export function computeNormalizedPoints(
       (1 - (d.value - minY) / rangeY) * height;
 
     return { x, y };
-  })//.filter((point) => point.x >= paddingLeft); // remove points outside chart
-  ;
+  }).filter((point) => point.x >= paddingLeft); // remove points outside chart
 }
 
 

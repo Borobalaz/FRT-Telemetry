@@ -168,7 +168,25 @@ export function TimeSeriesChart({
           );
         })}
 
+        <ChartGrid horizontalLines={gridLines} />
+        <ChartAxes
+          width={chartWidth}
+          height={height}
+          paddingLeft={paddingLeft}
+          paddingRight={paddingRight}
+          paddingTop={paddingTop}
+          paddingBottom={paddingBottom}
+          yMin={yRangeState[0]}
+          yMax={yRangeState[1]}
+          timeTicks={timeTicks}
+        />
       </svg>
+      <ChartLegend
+        signalNames={signalNames}
+        colors={colorsToUse}
+        activeSignals={activeSignals}
+        onToggleSignal={toggleSignal}
+      />
     </div>
   );
 }

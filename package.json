@@ -1,6 +1,6 @@
 {
   "name": "frt-telemetry",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Desktop telemetry visualization for FRT",
   "author": "Böröczky Balázs",
   "private": true,

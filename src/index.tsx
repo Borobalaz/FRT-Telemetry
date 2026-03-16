@@ -1,24 +1,14 @@
 import { render } from 'preact';
 
-import preactLogo from './assets/preact.svg';
 import './style.css';
 import { MainScreen } from './frontend/main-screen/MainScreen';
 
-export function App() {
-  return (
-    <div id="app" className="theme-dark">
-      <MainScreen />
-    </div>
-  );
+const rootElement = document.getElementById('app');
+
+if (!rootElement) {
+  throw new Error('Renderer root element #app was not found.');
 }
 
-function Resource(props) {
-  return (
-    <a href={props.href} target="_blank" class="resource">
-      <h2>{props.title}</h2>
-      <p>{props.description}</p>
-    </a>
-  );
-}
+rootElement.classList.add('theme-dark');
 
-render(<App />, document.getElementById('app'));
+render(<MainScreen />, rootElement);

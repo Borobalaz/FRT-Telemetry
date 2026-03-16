@@ -7,6 +7,14 @@ export function DBCMenu() {
   const [loadedDbcs, setLoadedDbcs] = useState<string[]>(dbcManager.getLoadedFileNames());
   const [dragActive, setDragActive] = useState(false);
 
+  function processContents(fileName: string, text: string) {
+    dbcManager.loadDBCFromString(text, fileName);
+
+    setStatus(`Loaded: ${fileName}`);
+    setLoadedDbcs(dbcManager.getLoadedFileNames());
+    dbcManager.printSummary();
+  }
+
   async function processFile(file: File) {
     if (!file.name.toLowerCase().endsWith(".dbc")) {
       setStatus("Please select a valid .dbc file.");
@@ -16,14 +24,37 @@ export function DBCMenu() {
     try {
       setStatus("Loading DBC...");
       const text = await file.text();
-      dbcManager.loadDBCFromString(text, file.name);
-
-      setStatus(`Loaded: ${file.name}`);
-      setLoadedDbcs(dbcManager.getLoadedFileNames());
-      dbcManager.printSummary();
+      processContents(file.name, text);
     } catch (err) {
       console.error(err);
       setStatus("Failed to load DBC file.");
+    }
+  }
+
+  async function handleDesktopFileSelect() {
+    if (!window.electronAPI) {
+      document.getElementById("dbcHiddenInput")?.click();
+      return;
+    }
+
+    try {
+      setStatus("Opening DBC dialog...");
+      const selectedFile = await window.electronAPI.files.openDBCFile();
+      if (!selectedFile) {
+        setStatus("DBC open canceled.");
+        return;
+      }
+
+      if (!selectedFile.name.toLowerCase().endsWith(".dbc")) {
+        setStatus("Please select a valid .dbc file.");
+        return;
+      }
+
+      setStatus("Loading DBC...");
+      processContents(selectedFile.name, selectedFile.contents);
+    } catch (err) {
+      console.error(err);
+      setStatus("Failed to open DBC file.");
     }
   }
 
@@ -69,7 +100,7 @@ export function DBCMenu() {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        onClick={() => document.getElementById("dbcHiddenInput")?.click()}
+        onClick={handleDesktopFileSelect}
       >
         <p>Click to upload or drag & drop a .dbc file</p>
       </div>

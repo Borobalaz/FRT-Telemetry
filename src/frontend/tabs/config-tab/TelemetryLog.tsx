@@ -1,4 +1,4 @@
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useMemo } from "preact/hooks";
 import { appLogger, LogEntry, LogLevel } from "../../../backend/app-logger/AppLogger";
 import "./TelemetryLog.css";
 import { IconButton } from "@mui/material";
@@ -10,15 +10,14 @@ export function TelemetryLog() {
   const [visibleLevels, setVisibleLevels] = useState<Set<LogLevel>>(
     new Set(LEVELS)
   );
-  const [entries, setEntries] = useState<LogEntry[]>([]);
+  const [entries, setEntries] = useState<LogEntry[]>(() => appLogger.getAll());
 
-  // Poll logger every 300ms to stay in sync
   useEffect(() => {
-    const interval = setInterval(() => {
+    const unsubscribe = appLogger.subscribe(() => {
       setEntries(appLogger.getAll());
-    }, 300);
+    });
 
-    return () => clearInterval(interval);
+    return unsubscribe;
   }, []);
 
   function toggleLevel(level: LogLevel) {
@@ -28,7 +27,10 @@ export function TelemetryLog() {
     setVisibleLevels(newLevels);
   }
 
-  const filtered = entries.filter((e) => visibleLevels.has(e.level));
+  const filtered = useMemo(
+    () => entries.filter((e) => visibleLevels.has(e.level)),
+    [entries, visibleLevels]
+  );
 
   return (
     <div className="telemetry-log">
@@ -56,8 +58,11 @@ export function TelemetryLog() {
           <div className="log-empty">No entries to display.</div>
         )}
 
-        {filtered.map((entry, i) => (
-          <div className={`log-entry ${entry.level}`} key={i}>
+        {filtered.map((entry) => (
+          <div
+            className={`log-entry ${entry.level}`}
+            key={`${entry.timestamp.getTime()}-${entry.level}-${entry.message}`}
+          >
             <span className="log-timestamp">
               {entry.timestamp.toLocaleTimeString()}
             </span>

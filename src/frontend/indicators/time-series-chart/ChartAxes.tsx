@@ -28,9 +28,9 @@ export function ChartAxes({
   const groupRef = useRef<SVGGElement>(null);
   const numTicks = 5;
 
-  // Refs for tick text elements
-  const yTickTexts = Array.from({ length: numTicks }, () => useRef<SVGTextElement>(null!));
-  const xTickTexts = Array.from({ length: numTicks }, () => useRef<SVGTextElement>(null!));
+  // Stable ref arrays prevent churn in high-frequency chart updates.
+  const yTickTexts = useRef<Array<SVGTextElement | null>>([]);
+  const xTickTexts = useRef<Array<SVGTextElement | null>>([]);
 
   // Update tick labels every animation frame
   useRAF(() => {
@@ -39,7 +39,7 @@ export function ChartAxes({
     // Y-axis ticks
     yTicks.forEach((tick, idx) => {
       const y = paddingTop + ((yMax - tick.value) / (yMax - yMin)) * (height - paddingTop - paddingBottom);
-      const text = yTickTexts[idx].current;
+      const text = yTickTexts.current[idx];
       if (text) {
         text.setAttribute("x", (paddingLeft - 8).toString());
         text.setAttribute("y", (y + 4).toString());
@@ -53,7 +53,7 @@ export function ChartAxes({
       for (let i = 0; i < numTicks; i++) {
         const idx = Math.min(i * step, timeTicks.length - 1);
         const t = timeTicks[idx];
-        const text = xTickTexts[i].current;
+        const text = xTickTexts.current[i];
         if (text) {
           text.setAttribute("x", t.x.toString());
           text.setAttribute("y", (height - paddingBottom + 18).toString());
@@ -68,14 +68,26 @@ export function ChartAxes({
       {/* Y ticks */}
       {Array.from({ length: numTicks }, (_, i) => (
         <g key={`y-${i}`}>
-          <text ref={yTickTexts[i]} class="chart-label" text-anchor="end" />
+          <text
+            ref={(el) => {
+              yTickTexts.current[i] = el;
+            }}
+            class="chart-label"
+            text-anchor="end"
+          />
         </g>
       ))}
 
       {/* X ticks */}
       {Array.from({ length: numTicks }, (_, i) => (
         <g key={`x-${i}`}>
-          <text ref={xTickTexts[i]} class="chart-label" text-anchor="middle" />
+          <text
+            ref={(el) => {
+              xTickTexts.current[i] = el;
+            }}
+            class="chart-label"
+            text-anchor="middle"
+          />
         </g>
       ))}
 

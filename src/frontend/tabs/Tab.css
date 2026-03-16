@@ -11,6 +11,12 @@
   margin-top: 5px;
 }
 
+@media (max-width: 1000px) {
+  .tab .section {
+    flex-direction: column !important;
+  }
+}
+
 .section-title {
   display: flex;
   align-self: center;

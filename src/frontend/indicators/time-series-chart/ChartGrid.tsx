@@ -14,9 +14,9 @@ interface ChartGridProps {
 export function ChartGrid({ horizontalLines }: ChartGridProps) {
   return (
     <>
-      {horizontalLines.map((line, i) => (
+      {horizontalLines.map((line) => (
         <line
-          key={i}
+          key={`${line.y}-${line.x1}-${line.x2}`}
           x1={line.x1}
           x2={line.x2}
           y1={line.y}

@@ -10,7 +10,7 @@ class CANSignals<T extends Record<string, any>> {
   private listeners: Map<keyof T, Set<Listener<any>>> = new Map();
 
   private history: Map<keyof T, HistoryEntry<any>[]> = new Map();
-  private historySubscribers: Set<keyof T> = new Set();
+  private historyRefCounts: Map<keyof T, number> = new Map();
 
   subscribe<K extends keyof T>(key: K, callback: Listener<T[K]>): () => void {
     if (!this.listeners.has(key)) this.listeners.set(key, new Set());
@@ -22,17 +22,33 @@ class CANSignals<T extends Record<string, any>> {
     }
 
     return () => {
-      this.listeners.get(key)!.delete(callback);
+      const keyListeners = this.listeners.get(key);
+      if (!keyListeners) return;
+      keyListeners.delete(callback);
+      if (keyListeners.size === 0) {
+        this.listeners.delete(key);
+      }
     };
   }
 
   enableHistoryForSignal<K extends keyof T>(key: K) {
-    if (!this.historySubscribers.has(key)) {
-      this.historySubscribers.add(key);
-      if (!this.history.has(key)) {
-        this.history.set(key, []);
-      }
+    const currentRefCount = this.historyRefCounts.get(key) ?? 0;
+    this.historyRefCounts.set(key, currentRefCount + 1);
+
+    if (!this.history.has(key)) {
+      this.history.set(key, []);
     }
+  }
+
+  disableHistoryForSignal<K extends keyof T>(key: K) {
+    const currentRefCount = this.historyRefCounts.get(key) ?? 0;
+    if (currentRefCount <= 1) {
+      this.historyRefCounts.delete(key);
+      this.history.delete(key);
+      return;
+    }
+
+    this.historyRefCounts.set(key, currentRefCount - 1);
   }
 
   getHistory<K extends keyof T>(key: K): HistoryEntry<T[K]>[] {
@@ -46,14 +62,23 @@ class CANSignals<T extends Record<string, any>> {
   set<K extends keyof T>(key: K, value: T[K]) {
     this.data[key] = value;
 
-    if (this.historySubscribers.has(key)) {
-      const arr = this.history.get(key)!;
+    if ((this.historyRefCounts.get(key) ?? 0) > 0) {
+      const arr = this.history.get(key) ?? [];
+      if (!this.history.has(key)) {
+        this.history.set(key, arr);
+      }
+
       arr.push({
         timestamp: performance.now(), // high-resolution timestamp
         value
       });
 
-      if (arr.length > appOptions.getOption("maxHistory")) {
+      const configuredMaxHistory = appOptions.getOption("maxHistory");
+      const maxHistory = Number.isFinite(configuredMaxHistory)
+        ? Math.max(1, Math.floor(configuredMaxHistory))
+        : 1000;
+
+      while (arr.length > maxHistory) {
         arr.shift();
       }
     }
@@ -71,6 +96,21 @@ class CANSignals<T extends Record<string, any>> {
       counts[String(key)] = set.size;
     });
     return counts;
+  }
+
+  getHistoryRefCounts(): Record<string, number> {
+    const counts: Record<string, number> = {};
+    this.historyRefCounts.forEach((count, key) => {
+      counts[String(key)] = count;
+    });
+    return counts;
+  }
+
+  reset() {
+    this.data = {};
+    this.listeners.clear();
+    this.history.clear();
+    this.historyRefCounts.clear();
   }
 }
 

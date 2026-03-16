@@ -15,8 +15,11 @@ export function useCANSignalHistory(
     canSignals.enableHistoryForSignal(signalName);
 
     historyRef.current = canSignals.getHistory(signalName);
-    
-    return () => {};
+
+    return () => {
+      canSignals.disableHistoryForSignal(signalName);
+      historyRef.current = [];
+    };
   }, [signalName]);
 
   return historyRef.current;

@@ -19,11 +19,25 @@ export class LogEntry {
 
 class AppLogger {
   private entries: LogEntry[] = [];
+  private readonly maxEntries = 1000;
+  private listeners: Set<() => void> = new Set();
+
+  private notify() {
+    for (const listener of this.listeners) {
+      listener();
+    }
+  }
 
   // --- Add a new log entry ---
   private add(level: LogLevel, message: string) {
     const entry = new LogEntry(level, message);
     this.entries.push(entry);
+
+    while (this.entries.length > this.maxEntries) {
+      this.entries.shift();
+    }
+
+    this.notify();
     return entry;
   }
 
@@ -48,6 +62,13 @@ class AppLogger {
     return [...this.entries]; // return a copy
   }
 
+  subscribe(listener: () => void): () => void {
+    this.listeners.add(listener);
+    return () => {
+      this.listeners.delete(listener);
+    };
+  }
+
   getByLevel(level: LogLevel): LogEntry[] {
     return this.entries.filter((e) => e.level === level);
   }
@@ -66,6 +87,7 @@ class AppLogger {
 
   clear() {
     this.entries = [];
+    this.notify();
   }
 }
 

@@ -8,8 +8,16 @@
 
 ## Getting Started
 
--   `npm run dev` - Starts a dev server at http://localhost:5173/
+-   `npm run dev` - Starts desktop development mode only
+-   `npm run dev:desktop` - Watches the renderer and Electron processes, then launches the desktop app
 
--   `npm run build` - Builds for production, emitting to `dist/`
+-   `npm run build` - Builds and packages the desktop application
+-   `npm run build:renderer` - Builds the renderer assets into `dist/`
+-   `npm run build:electron` - Bundles Electron main and preload entrypoints into `dist-electron/`
+-   `npm run build:desktop` - Builds the renderer and Electron app, then packages installers into `release/`
 
--   `npm run preview` - Starts a server at http://localhost:4173/ to test production build locally
+## Desktop Foundation
+
+-   Electron runs the existing renderer through a secure preload bridge.
+-   Native DBC file open is available in desktop mode via Electron dialog APIs.
+-   The project now runs as a desktop-only Electron application; there is no separate browser runtime path.

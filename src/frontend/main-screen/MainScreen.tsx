@@ -35,7 +35,12 @@ export function MainScreen() {
       canSignals.set("MCU_state", (canSignals.get("MCU_state") + 1) % 4);
       canSignals.set("SC_ENDLINE", !(canSignals.get("SC_ENDLINE")));
     }, 100); // update every 50ms
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      canSignals.disableHistoryForSignal("APPS_position");
+      canSignals.disableHistoryForSignal("MCU_state");
+      canSignals.disableHistoryForSignal("SC_ENDLINE");
+    };
   }, []);
 
 

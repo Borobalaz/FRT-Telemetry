@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo } from "preact/hooks";
+import { useEffect, useRef, useState, useMemo, useCallback } from "preact/hooks";
 import { useCANSignalHistory } from "../../../backend/signals/UseCANSignalHistory";
 import {
   computeNormalizedPoints,
@@ -64,8 +64,12 @@ export function TimeSeriesChart({
   const [activeSignals, setActiveSignals] = useState(
     Object.fromEntries(signalNames.map((s) => [s, true]))
   );
-  const toggleSignal = (sig: string) =>
-    setActiveSignals((prev) => ({ ...prev, [sig]: !prev[sig] }));
+  const toggleSignal = useCallback(
+    (sig: string) => {
+      setActiveSignals((prev) => ({ ...prev, [sig]: !prev[sig] }));
+    },
+    []
+  );
 
   // Time
   const currentTime = useTick();
@@ -107,7 +111,10 @@ export function TimeSeriesChart({
   }, [yRangeState]);
 
   // Misc
-  const colorsToUse = colors || ["#4af", "#fa4", "#4fa", "#f4a", "#af4", "#44f"];
+  const colorsToUse = useMemo(
+    () => colors || ["#4af", "#fa4", "#4fa", "#f4a", "#af4", "#44f"],
+    [colors]
+  );
   const drawableWidth = chartWidth - paddingLeft - paddingRight;
 
   // Gridlines

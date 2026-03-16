@@ -15,6 +15,20 @@
 -   `npm run build:renderer` - Builds the renderer assets into `dist/`
 -   `npm run build:electron` - Bundles Electron main and preload entrypoints into `dist-electron/`
 -   `npm run build:desktop` - Builds the renderer and Electron app, then packages installers into `release/`
+-   `npm run publish:github` - Builds production artifacts and publishes a GitHub release via Electron Builder
+
+## GitHub Production Publish
+
+Before running publish:
+
+-   Set `GH_TOKEN` to a GitHub token that can create releases in your repository.
+-   Provide repository target using one of:
+  -   `GITHUB_REPOSITORY=owner/repo` (automatic in GitHub Actions), or
+  -   `GH_OWNER` and `GH_REPO` in your environment.
+
+Command:
+
+-   `npm run publish:github`
 
 ## Desktop Foundation
 

@@ -33,6 +33,7 @@
 
 .grid {
   display: grid;
+  gap: 5px;
 
   /* max screen width */
   @media (max-width: 600px) {

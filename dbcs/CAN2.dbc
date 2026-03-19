@@ -1,0 +1,262 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: Brightloop HVECU TCU SSG CAESAR DCDC SECU
+
+
+BO_ 84 HVECU_TS_Values_2: 4 HVECU
+ SG_ hvecu_ts_soc : 7|16@0+ (1,0) [0|65535] "As" Vector__XXX
+ SG_ hvecu_ts_energy : 23|14@0- (1,0) [-8192|8191] "Wh" Vector__XXX
+
+BO_ 83 HVECU_TS_Values_1: 6 HVECU
+ SG_ hvecu_tv_voltage : 39|16@0+ (16,0) [0|1048560] "mV" Vector__XXX
+ SG_ hvecu_ts_power : 23|16@0- (4,0) [-131072|131068] "W" Vector__XXX
+ SG_ hvecu_ts_current : 7|16@0- (8,0) [-262144|262136] "mA" Vector__XXX
+
+BO_ 81 HVECU_HV_Critical_Cell_Values: 7 HVECU
+ SG_ hvecu_hv_critical_cell_heartbeat : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ hvecu_hv_cell_voltage_min_id : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ hvecu_hv_cell_temp_max : 25|10@0+ (0.1,-20) [-20|82.3] "�C" Vector__XXX
+ SG_ hvecu_hv_cell_voltage_max : 47|14@0+ (1,28500) [28500|44883] "V" Vector__XXX
+ SG_ hvecu_hv_cell_voltage_min : 23|14@0+ (1,28500) [28500|44883] "V" Vector__XXX
+
+BO_ 82 HVECU_HV_Cell_Values: 5 HVECU
+ SG_ hvecu_hv_cell_voltage_error : 37|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ hvecu_hv_cell_temp_error : 38|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ hvecu_hv_cell_comm_error : 39|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ hvecu_hv_cell_temperature : 17|10@0+ (0.1,-20) [-20|82.3] "�C" Vector__XXX
+ SG_ hvecu_hv_cell_id : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ hvecu_hv_cell_voltage : 15|14@0+ (1,28500) [28500|44883] "V" Vector__XXX
+
+BO_ 80 HVECU_status: 8 HVECU
+ SG_ PC_state : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ AIR_minus_state : 11|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ AIR_plus_State : 12|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ AMS_Relay_State : 20|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ AMS_Status : 15|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ TSAL_nERROR : 17|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ TS_Voltage_Before : 47|16@0+ (16,0) [0|1048560] "" Vector__XXX
+ SG_ HV_Cell_OT : 26|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ HV_Cell_OV : 25|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ HV_Cell_UV : 24|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ HV_DetStatus : 13|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ HV_DetStatus2 : 8|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ HV_ECU_Heartbeat : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ HV_ECU_SC_Endline_State : 10|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ IMD_Relay_State : 19|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ IMD_Status : 14|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ PC_Error : 28|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ SC_endline_HVECU : 63|8@0+ (0.1,0) [0|25.5] "V" Vector__XXX
+ SG_ TSAL_GREEN : 21|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ AIR_PLUS_EN : 16|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ TS_Over_Voltage : 27|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ PRECHARGE_IN_PROGRESS : 9|1@0+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 672 CAESAR_3_info3: 8 CAESAR
+ SG_ BSW_IPha_Abs_Max_3 : 40|16@1+ (0.003,0) [0|196.605] "A" Vector__XXX
+ SG_ SF_TrqSp_3 : 31|9@0+ (0.1,-25.5) [-25.5|25.6] "Nm" Vector__XXX
+ SG_ PWMG_UqSp_3 : 10|10@1- (1,0) [-512|511] "" Vector__XXX
+ SG_ PWMG_UdSp_3 : 0|10@1- (1,0) [-512|511] "" Vector__XXX
+
+BO_ 668 CAESAR_3_info2: 8 CAESAR
+ SG_ SD_NMech_3 : 55|16@0- (1,0) [-32768|32767] "RPM" Vector__XXX
+ SG_ ICL_IqMeas_3 : 39|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ ICL_IdMeas_3 : 23|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ HI_Tmotor_3 : 15|8@0+ (1,0) [0|255] "C" Vector__XXX
+ SG_ HI_Tmosfet_3 : 7|8@0+ (1,0) [0|255] "C" Vector__XXX
+
+BO_ 669 CAESAR_3_info1: 8 CAESAR
+ SG_ ICL_IqSp_3 : 51|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ ICL_IdSp_3 : 47|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ HI_Udc_3 : 31|13@0+ (0.1,0) [0|819.1] "V" Vector__XXX
+ SG_ MSM_CtrlSt_3 : 23|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ MSM_EncInit_3 : 2|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_GDUEn_3 : 3|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_PWMGenEn_3 : 4|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ SF_ErrSt_3 : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ BSW_CalibDone_3 : 5|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_GDU_OC_3 : 6|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_GDURdy_3 : 7|1@0+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 409 CAESAR_3_setpoint: 8 CAESAR
+ SG_ PM_Read_Params_3 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_ErrRst_3 : 19|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_CalibRqst_3 : 20|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_UqSp_3 : 52|10@0- (1,0) [-512|511] "V"  CAESAR
+ SG_ BSW_UdSp_3 : 46|10@0- (1,0) [-512|511] "V"  CAESAR
+ SG_ BSW_TrqSp_3 : 39|9@0- (0.1,0) [-25.5|25.6] "Nm"  CAESAR
+ SG_ BSW_RunRqst_3 : 21|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_RPM_Max_3 : 31|8@0+ (85,0) [0|21675] "RPM"  CAESAR
+ SG_ BSW_ModeSln_3 : 23|2@0+ (1,0) [0|3] ""  CAESAR
+ SG_ BSW_IAxqSp_3 : 15|8@0- (1,0) [-128|127] "A"  CAESAR
+ SG_ BSW_IAxdSp_3 : 7|8@0- (1,0) [-128|127] "A"  CAESAR
+
+BO_ 673 CAESAR_4_info3: 8 CAESAR
+ SG_ BSW_IPha_Abs_Max_4 : 40|16@1+ (0.003,0) [0|196.605] "A" Vector__XXX
+ SG_ SF_TrqSp_4 : 31|9@0+ (0.1,-25.5) [-25.5|25.6] "Nm" Vector__XXX
+ SG_ PWMG_UqSp_4 : 10|10@1- (1,0) [-512|511] "" Vector__XXX
+ SG_ PWMG_UdSp_4 : 0|10@1- (1,0) [-512|511] "" Vector__XXX
+
+BO_ 674 CAESAR_4_info2: 8 CAESAR
+ SG_ SD_NMech_4 : 55|16@0- (1,0) [-32768|32767] "RPM" Vector__XXX
+ SG_ ICL_IqMeas_4 : 39|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ ICL_IdMeas_4 : 23|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ HI_Tmotor_4 : 15|8@0+ (1,0) [0|255] "C" Vector__XXX
+ SG_ HI_Tmosfet_4 : 7|8@0+ (1,0) [0|255] "C" Vector__XXX
+
+BO_ 675 CAESAR_4_info1: 8 CAESAR
+ SG_ ICL_IqSp_4 : 51|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ ICL_IdSp_4 : 47|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ HI_Udc_4 : 31|13@0+ (0.1,0) [0|819.1] "V" Vector__XXX
+ SG_ MSM_CtrlSt_4 : 23|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ MSM_EncInit_4 : 2|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_GDUEn_4 : 3|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_PWMGenEn_4 : 4|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ SF_ErrSt_4 : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ BSW_CalibDone_4 : 5|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_GDU_OC_4 : 6|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_GDURdy_4 : 7|1@0+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 410 CAESAR_4_setpoint: 8 CAESAR
+ SG_ PM_Read_Params_4 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_ErrRst_4 : 19|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_CalibRqst_4 : 20|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_UqSp_4 : 52|10@0- (1,0) [-512|511] "V"  CAESAR
+ SG_ BSW_UdSp_4 : 46|10@0- (1,0) [-512|511] "V"  CAESAR
+ SG_ BSW_TrqSp_4 : 39|9@0- (0.1,0) [-25.5|25.6] "Nm"  CAESAR
+ SG_ BSW_RunRqst_4 : 21|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_RPM_Max_4 : 31|8@0+ (85,0) [0|21675] "RPM"  CAESAR
+ SG_ BSW_ModeSln_4 : 23|2@0+ (1,0) [0|3] ""  CAESAR
+ SG_ BSW_IAxqSp_4 : 15|8@0- (1,0) [-128|127] "A"  CAESAR
+ SG_ BSW_IAxdSp_4 : 7|8@0- (1,0) [-128|127] "A"  CAESAR
+
+BO_ 912 NDCDCControl: 8 HVECU
+ SG_ BDCDCOutput1Requested : 8|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BDCDCOutput2Requested : 9|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BDCDCRegenerationOn : 17|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BDCDCUmbilicalOn : 16|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ NPDBCounter : 0|8@1+ (1,0) [0|255] ""  DCDC
+
+BO_ 913 NDCDCSetpoints: 8 HVECU
+ SG_ IDCDCHVLimit m9 : 20|12@1+ (0.0125,-25) [-25|26.1875] "A"  DCDC
+ SG_ IDCDCLV1Limit m1 : 20|12@1+ (0.25,-500) [-500|523.75] "A"  DCDC
+ SG_ IDCDCLV2Limit m2 : 20|12@1+ (0.25,-500) [-500|523.75] "A"  DCDC
+ SG_ NDCDCMultiplexer M : 0|8@1+ (1,0) [0|4294967295] ""  DCDC
+ SG_ VDCDCHVSetpoint m9 : 8|12@1+ (0.25,0) [0|1023.75] "V"  DCDC
+ SG_ VDCDCLV1Setpoint m1 : 8|12@1+ (0.0152942148,0) [0|62.629809606] "V"  DCDC
+ SG_ VDCDCLV2Setpoint m2 : 8|12@1+ (0.0152942148,0) [0|62.629809606] "V"  DCDC
+
+BO_ 914 NDCDCStatus: 8 DCDC
+ SG_ BDCDCAuxIsoEnabled : 6|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCBB1OtpError : 24|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCBB2OtpError : 25|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCBB3OtpError : 26|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCCANError : 5|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCHVError : 10|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCHVOcpError : 11|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLVOvpInError : 7|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLVUvpAlimAuxError : 9|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLVUvpInError : 8|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCOutput1Demanded : 12|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCOutput1OvpError : 13|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCOutput1Warning : 14|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCOutput2Demanded : 15|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCOutput2OvpError : 16|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCOutput2Warning : 17|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCRegenerationDemanded : 31|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCSR1OtpError : 28|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCSR2OtpError : 29|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCUmbilicalDemanded : 30|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCWakeUp : 4|1@1+ (1,0) [0|1] ""  SECU
+ SG_ NDCDCState : 0|4@1+ (1,0) [0|15] ""  SECU
+
+BO_ 915 NDCDCValue: 8 DCDC
+ SG_ Multiplexer M : 27|5@1+ (1,0) [0|4294967295] ""  SECU
+ SG_ IDCDCHVInAverage m8 : 48|12@1+ (0.0125,-25) [-25|26.1875] "A"  SECU
+ SG_ BDCDCFlashSubzoneError m5 : 63|1@1+ (1,0) [0|1] ""  SECU
+ SG_ IDCDCOutput1UnBalance m1 : 48|8@1+ (0.25,0) [0|63.75] "A"  SECU
+ SG_ NDCDCApplicationId m6 : 32|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCBootloaderId m6 : 48|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCChecksum m5 : 32|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCOutputOverload1Count m4 : 32|8@1+ (1,0) [0|255] ""  SECU
+ SG_ NDCDCOutputOverload2Count m4 : 40|8@1+ (1,0) [0|255] ""  SECU
+ SG_ NDCDCRcpWarning m5 : 62|1@1+ (1,0) [0|1] ""  SECU
+ SG_ NDCDCSerial m7 : 32|32@1+ (1,0) [0|4294967295] ""  SECU
+ SG_ NDCDCXcpFaults m8 : 32|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ TDCDCBB1Measured m3 : 32|8@1+ (1,-40) [-40|215] " C"  SECU
+ SG_ TDCDCBB2Measured m3 : 40|8@1+ (1,-40) [-40|215] " C"  SECU
+ SG_ TDCDCBB3Measured m3 : 48|8@1+ (1,-40) [-40|215] " C"  SECU
+ SG_ TDCDCSR1Measured m2 : 40|8@1+ (1,-40) [-40|215] " C"  SECU
+ SG_ TDCDCSR2Measured m2 : 48|8@1+ (1,-40) [-40|215] " C"  SECU
+ SG_ VDCDCAux1Measured m0 : 40|8@1+ (0.07723368,0) [0|19.6945884] "V"  SECU
+ SG_ VDCDCAux2Measured m0 : 48|8@1+ (0.0386813,0) [0|9.8637315] "V"  SECU
+ SG_ VDCDCAux3Measured m0 : 56|8@1+ (0.015472526,0) [0|3.94549413] "V"  SECU
+ SG_ VDCDCAux4Measured m1 : 32|8@1+ (0.0386813,0) [0|9.8637315] "V"  SECU
+ SG_ VDCDCAux5Measured m1 : 40|8@1+ (0.01289377,0) [0|3.28791135] "V"  SECU
+ SG_ VDCDCHVInAverage m0 : 32|8@1+ (4.894148739,0) [0|1248.007928445] "V"  SECU
+ SG_ VDCDCLVInAverage : 18|9@1+ (0.1223537,0) [0|62.5227407] "V"  SECU
+ SG_ VDCDCLVInMax : 9|9@1+ (0.1223537,0) [0|62.5227407] "V"  SECU
+ SG_ VDCDCLVInMin : 0|9@1+ (0.1223537,0) [0|62.5227407] "V"  SECU
+
+BO_ 916 NDCDCValueOutput1: 8 DCDC
+ SG_ IDCDCOutput1Average : 53|10@1+ (0.5,-200) [-200|311.5] "A"  SECU
+ SG_ IDCDCOutput1Max : 43|10@1+ (0.5,-200) [-200|311.5] "A"  SECU
+ SG_ IDCDCOutput1Min : 33|10@1+ (0.5,-200) [-200|311.5] "A"  SECU
+ SG_ VDCDCOutput1Average : 22|11@1+ (0.0305884296,0) [0|62.6145153912] "V"  SECU
+ SG_ VDCDCOutput1Max : 11|11@1+ (0.0305884296,0) [0|62.6145153912] "V"  SECU
+ SG_ VDCDCOutput1Min : 0|11@1+ (0.0305884296,0) [0|62.6145153912] "V"  SECU
+
+BO_ 917 NDCDCValueOutput2: 8 DCDC
+ SG_ IDCDCOutput2Average : 53|10@1+ (0.5,-200) [-200|311.5] "A"  SECU
+ SG_ IDCDCOutput2Max : 43|10@1+ (0.5,-200) [-200|311.5] "A"  SECU
+ SG_ IDCDCOutput2Min : 33|10@1+ (0.5,-200) [-200|311.5] "A"  SECU
+ SG_ VDCDCOutput2Average : 22|11@1+ (0.0305884296,0) [0|62.6145153912] "V"  SECU
+ SG_ VDCDCOutput2Max : 11|11@1+ (0.0305884296,0) [0|62.6145153912] "V"  SECU
+ SG_ VDCDCOutput2Min : 0|11@1+ (0.0305884296,0) [0|62.6145153912] "V"  SECU
+
+
+
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","Event","CyclicIfActive","SpontanWithDelay","CyclicAndSpontan","CyclicAndSpontanWithDelay";
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_  "MultiplexExtEnabled" ENUM  "No","Yes";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "GenMsgSendType" "Cyclic";
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "MultiplexExtEnabled" "No";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "BusType" "CAN";
+

@@ -1,0 +1,294 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: CAESAR TCU SSG
+
+
+BO_ 671 CAESAR_2_info3: 8 CAESAR
+ SG_ SF_TrqSp_2 : 31|9@0+ (0.1,-25.5) [-25.5|25.6] "Nm" Vector__XXX
+ SG_ BSW_IPha_Abs_Max_2 : 40|16@1+ (0.003,0) [0|196.605] "A" Vector__XXX
+ SG_ PWMG_UqSp_2 : 10|10@1- (1,0) [-512|511] "" Vector__XXX
+ SG_ PWMG_UdSp_2 : 0|10@1- (1,0) [-512|511] "" Vector__XXX
+
+BO_ 667 CAESAR_2_info2: 8 CAESAR
+ SG_ SD_NMech_2 : 55|16@0- (1,0) [-32768|32767] "RPM" Vector__XXX
+ SG_ ICL_IqMeas_2 : 39|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ ICL_IdMeas_2 : 23|12@0- (1,0) [-2048|2047] "A" Vector__XXX
+ SG_ HI_Tmotor_2 : 15|8@0+ (1,0) [0|255] "C" Vector__XXX
+ SG_ HI_Tmosfet_2 : 7|8@0+ (1,0) [0|255] "C" Vector__XXX
+
+BO_ 665 CAESAR_2_info1: 8 CAESAR
+ SG_ SF_ErrSt_2 : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ MSM_PWMGenEn_2 : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_GDUEn_2 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_EncInit_2 : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_CtrlSt_2 : 23|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ ICL_IqSp_2 : 51|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ ICL_IdSp_2 : 47|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ HI_Udc_2 : 31|13@0+ (1,0) [0|8191] "V" Vector__XXX
+ SG_ BSW_GDURdy_2 : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_GDU_OC_2 : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_CalibDone_2 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 408 CAESAR_2_setpoint: 8 CAESAR
+ SG_ PM_Read_Params_2 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_ErrRst_2 : 19|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_CalibRqst_2 : 20|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_UqSp_2 : 52|10@0- (1,0) [-512|511] "V"  CAESAR
+ SG_ BSW_UdSp_2 : 46|10@0- (1,0) [-512|511] "V"  CAESAR
+ SG_ BSW_TrqSp_2 : 39|9@0- (0.1,0) [-25.5|25.6] "Nm"  CAESAR
+ SG_ BSW_RunRqst_2 : 21|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_RPM_Max_2 : 31|8@0+ (85,0) [0|21675] "RPM"  CAESAR
+ SG_ BSW_ModeSln_2 : 23|2@0+ (1,0) [0|3] ""  CAESAR
+ SG_ BSW_IAxqSp_2 : 15|8@0- (1,0) [-128|127] "A"  CAESAR
+ SG_ BSW_IAxdSp_2 : 7|8@0- (1,0) [-128|127] "A"  CAESAR
+
+BO_ 670 CAESAR_1_info3: 8 CAESAR
+ SG_ SF_TrqSp_1 : 31|9@0+ (0.1,-25.5) [-25.5|25.6] "Nm" Vector__XXX
+ SG_ PWMG_UqSp_1 : 0|10@1- (1,0) [-512|511] "" Vector__XXX
+ SG_ PWMG_UdSp_1 : 10|10@1- (1,0) [-512|511] "" Vector__XXX
+ SG_ BSW_IPha_Abs_Max_1 : 40|16@1+ (0.003,0) [0|196.605] "A" Vector__XXX
+
+BO_ 666 CAESAR_1_info2: 8 CAESAR
+ SG_ SD_NMech_1 : 55|16@0- (1,0) [-32768|32767] "RPM" Vector__XXX
+ SG_ ICL_IqMeas_1 : 39|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ ICL_IdMeas_1 : 23|12@0- (1,0) [-2048|2047] "A" Vector__XXX
+ SG_ HI_Tmotor_1 : 15|8@0+ (1,0) [0|255] "C" Vector__XXX
+ SG_ HI_Tmosfet_1 : 7|8@0+ (1,0) [0|255] "C" Vector__XXX
+
+BO_ 664 CAESAR_1_info1: 8 CAESAR
+ SG_ SF_ErrSt_1 : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ MSM_PWMGenEn_1 : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_GDUEn_1 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_EncInit_1 : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ MSM_CtrlSt_1 : 23|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ ICL_IqSp_1 : 51|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ ICL_IdSp_1 : 47|12@0- (0.1,0) [-204.8|204.7] "A" Vector__XXX
+ SG_ HI_Udc_1 : 31|13@0+ (1,0) [0|8191] "V" Vector__XXX
+ SG_ BSW_GDURdy_1 : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_GDU_OC_1 : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_CalibDone_1 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 407 CAESAR_1_setpoint: 8 CAESAR
+ SG_ PM_Read_Params_1 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BSW_ErrRst_1 : 19|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_CalibRqst_1 : 20|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_UqSp_1 : 52|10@0- (1,0) [-512|511] "V"  CAESAR
+ SG_ BSW_UdSp_1 : 46|10@0- (1,0) [-512|511] "V"  CAESAR
+ SG_ BSW_TrqSp_1 : 39|9@0- (0.1,0) [-25.5|25.6] "Nm"  CAESAR
+ SG_ BSW_RunRqst_1 : 21|1@0+ (1,0) [0|1] ""  CAESAR
+ SG_ BSW_RPM_Max_1 : 31|8@0+ (85,0) [0|21675] "RPM"  CAESAR
+ SG_ BSW_ModeSln_1 : 23|2@0+ (1,0) [0|3] ""  CAESAR
+ SG_ BSW_IAxqSp_1 : 15|8@0- (1,0) [-128|127] "A"  CAESAR
+ SG_ BSW_IAxdSp_1 : 7|8@0- (1,0) [-128|127] "A"  CAESAR
+
+BO_ 896 TCU_Status1: 8 TCU
+ SG_ VDC_Powerlimiter_Iterative_On : 51|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_RPM_Max_Energy_Management : 38|9@1+ (50,4000) [4000|29550] "1/min" Vector__XXX
+ SG_ VDC_SC_SMC_on : 50|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_Braking_Torque_Multiplier : 0|9@1+ (0.01,0) [0|5.11] "" Vector__XXX
+ SG_ VDC_Car_Standing : 54|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_DV_mode : 60|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_Disable_Regbrake_F : 61|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_Driving_Torque_Multiplier : 9|9@1+ (0.01,0) [0|5.11] "" Vector__XXX
+ SG_ VDC_Drop_Parameter : 32|6@1+ (0.05,0) [0|3.15] "Nm" Vector__XXX
+ SG_ VDC_Last_AMK_Error_Place : 57|3@1+ (1,0) [0|4] "" Vector__XXX
+ SG_ VDC_Disable_Torque_Demand : 52|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_Power_Max : 24|7@1+ (1000,0) [0|127000] "W" Vector__XXX
+ SG_ VDC_Power_Max_Correction_On : 63|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_Powerlimiter_Hardcore_On : 53|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_RPM_Max : 18|6@1+ (500,0) [0|31500] "1/min" Vector__XXX
+ SG_ VDC_Safety_Mode : 55|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_SC_PID_on : 62|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_btc_Error : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1153 TCU_Status2: 8 TCU
+ SG_ VDC_Torque_Demand_Limited : 48|16@1+ (0.0025,-78.9) [-78.9|84.9375] "Nm" Vector__XXX
+ SG_ VDC_Torque_Demand_Real : 39|16@0+ (0.0025,-78.9) [-78.9|84.9375] "Nm" Vector__XXX
+ SG_ VDC_Torque_Demand : 15|16@0+ (0.0025,-78.9) [-78.9|84.9375] "Nm" Vector__XXX
+ SG_ VDC_Brake_Balance : 24|8@1+ (0.02,0) [0|5.1] "" Vector__XXX
+ SG_ VDC_Brake_Force_Max : 4|4@1+ (100,0) [0|1500] "N" Vector__XXX
+ SG_ VDC_EPOS_State : 0|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ VDC_MCU_State : 2|2@1+ (1,0) [0|3] "" Vector__XXX
+
+BO_ 1157 TCU_Status3: 6 TCU
+ SG_ VDC_SoC : 0|10@1+ (0.1,0) [0|102.3] "%" Vector__XXX
+ SG_ VDC_BFS_Offset : 10|6@1+ (10,0) [0|630] "N" Vector__XXX
+ SG_ VDC_Fz_FL : 16|8@1+ (10,0) [0|2550] "N" Vector__XXX
+ SG_ VDC_Fz_FR : 24|8@1+ (10,0) [0|2550] "N" Vector__XXX
+ SG_ VDC_Fz_RL : 32|8@1+ (10,0) [0|2550] "N" Vector__XXX
+ SG_ VDC_Fz_RR : 40|8@1+ (10,0) [0|2550] "N" Vector__XXX
+
+BO_ 1158 TCU_Status4: 8 TCU
+ SG_ VDC_Understeer_Gradient_B : 56|8@1+ (0.0002,-0.02) [-0.02|0.031] "" Vector__XXX
+ SG_ VDC_Understeer_Gradient_A : 48|8@1+ (0.0002,-0.02) [-0.02|0.031] "" Vector__XXX
+ SG_ VDC_Brake_Force_Filtered : 23|9@1+ (5,0) [0|2555] "N" Vector__XXX
+ SG_ VDC_Launch_Control_Mu : 16|7@1+ (0.05,0) [0|6.35] "" Vector__XXX
+ SG_ VDC_Optimal_Slip_Braking : 0|7@1+ (0.01,0) [0|1.27] "" Vector__XXX
+ SG_ VDC_SMC_P : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VDC_Target_SoC : 40|8@1+ (500,0) [0|127500] "mAh" Vector__XXX
+ SG_ VDC_Throttle_Breakpoint : 32|6@1+ (5,0) [0|315] "" Vector__XXX
+
+BO_ 1159 TCU_Status5: 7 TCU
+ SG_ Fx_Observer_Poles : 47|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ VDC_Laps : 0|7@1+ (1,0) [0|127] "" Vector__XXX
+ SG_ VDC_Optimal_Slip : 32|8@1+ (0.01,0) [0|2.55] "" Vector__XXX
+ SG_ VDC_Slip_Control_D : 24|4@1+ (0.1,0) [0|1.5] "" Vector__XXX
+ SG_ VDC_Slip_Control_I : 28|4@1+ (4,0) [0|300] "" Vector__XXX
+ SG_ VDC_Slip_Control_P : 16|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VDC_Tank : 48|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ VDC_Track_Length : 8|8@1+ (10,0) [0|2550] "m" Vector__XXX
+
+BO_ 1161 TCU_StatusYC: 8 TCU
+ SG_ VDC_Yaw_Control_Omega : 56|8@1+ (1,0) [0|255] "rad/s" Vector__XXX
+ SG_ VDC_M_Yaw : 7|16@0+ (0.1,-3276.8) [-3276.8|3276.7] "Nm" Vector__XXX
+ SG_ VDC_M_Yaw_Limit : 34|6@1+ (50,0) [0|3150] "Nm" Vector__XXX
+ SG_ VDC_Yaw_Control_Balance : 16|6@1+ (0.02,0) [0|1.26] "" Vector__XXX
+ SG_ VDC_Yaw_Control_On : 33|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VDC_Yaw_Control_P : 27|6@1+ (25,0) [0|1575] "" Vector__XXX
+ SG_ VDC_Yaw_Control_Weight_Selector : 22|2@1+ (1,1) [1|4] "" Vector__XXX
+ SG_ VDC_Yaw_Rate_Error : 47|16@0+ (0.001,-32.768) [-32.768|32.767] "" Vector__XXX
+ SG_ VDC_YC_Type : 24|3@1+ (1,1) [1|8] "" Vector__XXX
+
+BO_ 624 Speed_Values: 5 TCU
+ SG_ TCU_Heartbeat : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ v_x : 15|16@0+ (0.001,0) [0|65.535] "m/s" Vector__XXX
+ SG_ v_y : 31|11@0+ (0.01,-10) [-10|10.47] "m/s" Vector__XXX
+
+BO_ 1155 TCU_InputError1: 4 TCU
+ SG_ HeartBeat_Error_Xavier : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ HeartBeat_Error_CritCellValues : 21|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ HeartBeat_Error_BoschIMU : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Plausibility_Error_APPS : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Timeout_Error_Rotary1 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Timeout_Error_Rotary2 : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Timeout_Error_Rotary3 : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Timeout_Error_Rotary4 : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Timeout_Error_Rotary5 : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_AccX_Front : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_AccY_Front : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_BFS : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_Button2 : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_Button3 : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_Button4 : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_DV_Target_Angle : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_DV_Target_Speed : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_HV_Cell_Temp : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_HV_Cell_Voltage : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_HV_Current : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_HV_Voltage : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_Rotary1 : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_Rotary2 : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_Rotary3 : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_Rotary4 : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_Rotary5 : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_SC_Endline : 20|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Validity_Error_Yaw_Rate_Front : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1317 SSG_status: 8 SSG
+ SG_ POS_VALID : 58|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GNSS_RDY : 59|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GNSS_ERROR : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Driver_Button_Signal : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ AMS_LED : 32|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ ASMS : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ ASSI_state : 53|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ AS_GO_Signal : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ AS_Mission_selected : 50|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ BAG_START : 30|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Brake_Light : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Buzzer : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Car_state : 3|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ Cooling : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Dashboard_heartbeat_error : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Datalogger_2D_12V : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ EBS_FB : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ External_TS_Button : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ HVECU_Heartbeat_error : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ IMD_LED : 36|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ Initial_Checkup_state : 8|3@1+ (1,0) [0|11] "" Vector__XXX
+ SG_ MCU_HVdet : 31|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ MCU_Heartbeat_error : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ MCU_LED : 38|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ MCU_SUPPLY : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Pedal_Node_Heartbeat_error : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SB_FB : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SC_BSPD_FB : 48|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SC_ENDLINE_SSG : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SC_FRONT_FB : 45|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SC_HOOP_FB : 46|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SC_HVECU_TSMS_FB : 49|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SC_MCU_FB : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SC_RES_FB : 44|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SC_START : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SSG_Heartbeat : 60|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ Steering_Heartbeat_error : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ TCU_Heartbeat_error : 29|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ TCU_LED : 40|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ TCU_Power : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ TS_OFF_LED : 34|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ WATCHDOG : 20|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Xavier_LED : 42|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ nEBS_ENGAGE : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ nSB_ENGAGE : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 256 Throttle_Steering: 8 SSG
+ SG_ PPS1 : 40|8@1+ (0.1,0) [0|25.5] "bar"  TCU
+ SG_ APPS1_position : 0|8@1+ (1,0) [0|100] "%"  TCU
+ SG_ APPS1_validity : 32|1@1+ (1,0) [0|1] ""  TCU
+ SG_ APPS2_position : 8|8@1+ (1,0) [0|100] "%"  TCU
+ SG_ APPS2_validity : 33|1@1+ (1,0) [0|1] ""  TCU
+ SG_ APPS_plausiblity : 34|1@1+ (1,0) [0|1] ""  TCU
+ SG_ PPS2 : 48|8@1+ (0.1,0) [0|409.5] "bar"  TCU
+ SG_ STA1_position : 23|8@0+ (1,0) [0|360] ""  TCU
+ SG_ STA1_validity : 35|1@1+ (1,0) [0|1] ""  TCU
+ SG_ STA2_position : 31|8@0+ (1,0) [0|360] ""  TCU
+ SG_ STA2_validity : 36|1@1+ (1,0) [0|1] ""  TCU
+ SG_ STA_plausiblity : 37|1@1+ (1,0) [0|1] ""  TCU
+
+
+
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","Event","CyclicIfActive","SpontanWithDelay","CyclicAndSpontan","CyclicAndSpontanWithDelay";
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_  "MultiplexExtEnabled" ENUM  "No","Yes";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "GenMsgSendType" "Cyclic";
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "MultiplexExtEnabled" "No";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "BusType" "CAN";
+

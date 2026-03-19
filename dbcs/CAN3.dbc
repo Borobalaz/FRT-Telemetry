@@ -1,0 +1,258 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: DV GNSS IMU TCU TTS_3 TTS_4 TTS_2 TTS_1 PedalNode Dash SSG Steering Vector__XX EPOS RES
+
+
+BO_ 1795 TTS_RR_Temperature: 5 TTS_4
+ SG_ tts_rr_right : 20|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+ SG_ tts_rr_left : 0|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+ SG_ tts_rr_heartbeat : 30|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ tts_rr_center : 10|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+
+BO_ 1794 TTS_RL_Temperature: 5 TTS_3
+ SG_ tts_rl_right : 20|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+ SG_ tts_rl_left : 0|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+ SG_ tts_rl_heartbeat : 30|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ tts_rl_center : 10|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+
+BO_ 1793 TTS_FR_Temperature: 5 TTS_2
+ SG_ tts_fr_right : 20|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+ SG_ tts_fr_left : 0|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+ SG_ tts_fr_heartbeat : 30|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ tts_fr_center : 10|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+
+BO_ 1792 TTS_FL_Temperature: 5 TTS_1
+ SG_ tts_fl_right : 20|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+ SG_ tts_fl_left : 10|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+ SG_ tts_fl_heartbeat : 30|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ tts_fl_center : 0|10@1+ (0.1,0) [0|102.3] "Celsius" Vector__XXX
+
+BO_ 380 IMU_MM7_10_TX3_17C: 8 IMU
+ SG_ imu_msg_cnt_tx3 : 48|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_crc_tx3 : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_az_stat : 52|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_az : 32|16@1+ (0.000127465,-4.1768) [-4.1768|4.176618775] "g" Vector__XXX
+
+BO_ 376 IMU_MM7_10_TX2_178: 8 IMU
+ SG_ imu_psip3_stat : 20|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_psip3 : 0|16@1+ (0.005,-163.84) [-163.84|163.835] "�/s" Vector__XXX
+ SG_ imu_msg_cnt_tx2 : 48|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_crc_tx2 : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_clu_stat5 : 16|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_clu_diag : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_ax1_stat : 52|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_ax1 : 32|16@1+ (0.000127465,-4.1768) [-4.1768|4.176618775] "g" Vector__XXX
+
+BO_ 372 IMU_MM7_10_TX1_174: 8 IMU
+ SG_ imu_psip1_stat : 20|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_psip1 : 0|16@1+ (0.005,-163.84) [-163.84|163.835] "�/s" Vector__XXX
+ SG_ imu_msg_cnt_tx1 : 16|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_crc_tx1 : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_clu_stat : 48|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_ay1_stat : 52|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ imu_ay1 : 32|16@1+ (0.000127465,-4.1768) [-4.1768|4.176618775] "g" Vector__XXX
+
+BO_ 1537 PN_Raw_Front_Coolant_WTR: 6 Vector__XXX
+ SG_ pn_raw_motor_coolant_temp : 36|12@1+ (1,0) [0|4095] "" Vector__XXX
+ SG_ pn_raw_motor_coolant_flow : 24|12@1+ (1,0) [0|4095] "Hz" Vector__XXX
+ SG_ pn_raw_fr_wtr : 12|12@1+ (1,0) [0|4095] "" Vector__XXX
+ SG_ pn_raw_fl_wtr : 0|12@1+ (1,0) [0|4095] "" Vector__XXX
+
+BO_ 1024 PN_Raw_Throttle_Steering: 7 Vector__XXX
+ SG_ pn_raw_sta_2 : 44|12@1+ (1,0) [0|4095] "" Vector__XXX
+ SG_ pn_raw_sta_1 : 32|12@1+ (1,0) [0|4095] "" Vector__XXX
+ SG_ pn_raw_apps_2 : 20|12@1+ (1,0) [0|4095] "" Vector__XXX
+ SG_ pn_raw_apps_1 : 8|12@1+ (1,0) [0|4095] "" Vector__XXX
+ SG_ pn_heartbeat : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 1363 Dash_Long_Text_Part_1: 8 Vector__XXX
+ SG_ dash_long_text_letter_9 : 56|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_8 : 49|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_7 : 42|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_6 : 35|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_5 : 28|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_4 : 21|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_3 : 14|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_2 : 7|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_1 : 0|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+
+BO_ 1364 Dash_Long_Text_Part_2: 8 Vector__XXX
+ SG_ dash_long_text_letter_18 : 56|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_17 : 49|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_16 : 42|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_15 : 35|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_14 : 28|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_13 : 21|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_12 : 14|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_11 : 7|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_long_text_letter_10 : 0|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+
+BO_ 1365 Dash_LEDs: 4 Vector__XXX
+ SG_ dash_red_led_9 : 31|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_8 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_7 : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_6 : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_5 : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_4 : 20|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_3 : 21|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_2 : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_16 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_15 : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_14 : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_13 : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_12 : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_11 : 29|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_10 : 30|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_red_led_1 : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_9 : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_8 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_7 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_6 : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_5 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_4 : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_3 : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_2 : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_16 : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_15 : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_14 : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_13 : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_12 : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_11 : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_10 : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_green_led_1 : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1362 Dash_Temporary_Text: 7 Vector__XXX
+ SG_ dash_temp_text_letter_8 : 49|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_temp_text_letter_7 : 42|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_temp_text_letter_6 : 35|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_temp_text_letter_5 : 28|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_temp_text_letter_4 : 21|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_temp_text_letter_3 : 14|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_temp_text_letter_2 : 7|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_temp_text_letter_1 : 0|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+
+BO_ 1361 Dash_Constant_Text: 7 Vector__XXX
+ SG_ dash_const_text_letter_8 : 49|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_const_text_letter_7 : 42|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_const_text_letter_6 : 35|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_const_text_letter_5 : 28|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_const_text_letter_4 : 21|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_const_text_letter_3 : 14|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_const_text_letter_2 : 7|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+ SG_ dash_const_text_letter_1 : 0|7@1+ (1,0) [0|127] "ASCII" Vector__XXX
+
+BO_ 1360 Dash_Status: 1 Vector__XXX
+ SG_ dash_button_start : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_heartbeat : 3|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ dash_button_on_off : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ dash_button_HV : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1025 PN_Raw_Brake_Values: 7 Vector__XXX
+ SG_ pn_PPS_2 : 48|8@1+ (0.1,0) [0|25.5] "bar" Vector__XXX
+ SG_ pn_PPS_1 : 40|8@1+ (0.1,0) [0|25.5] "bar" Vector__XXX
+ SG_ pn_brake_force_sensor : 24|12@1+ (1,0) [0|4095] "N" Vector__XXX
+ SG_ pn_brake_pressure_rear : 12|12@1+ (0.1,0) [0|409.5] "bar" Vector__XXX
+ SG_ pn_brake_pressure_front : 0|12@1+ (0.1,0) [0|409.5] "bar" Vector__XXX
+
+BO_ 1264 Steering_Status: 4 Steering
+ SG_ steering_heartbeat : 26|6@1+ (1,0) [0|63] ""  SSG
+ SG_ steering_rotary_5 : 16|4@1+ (1,0) [1|12] ""  SSG
+ SG_ steering_rotary_4 : 12|4@1+ (1,0) [1|12] ""  SSG
+ SG_ steering_rotary_3 : 8|4@1+ (1,0) [1|12] ""  SSG
+ SG_ steering_rotary_2 : 4|4@1+ (1,0) [1|12] ""  SSG
+ SG_ steering_rotary_1 : 0|4@1+ (1,0) [0|12] ""  SSG
+ SG_ steering_button_6 : 25|1@1+ (1,0) [0|1] ""  SSG
+ SG_ steering_button_5 : 24|1@1+ (1,0) [0|1] ""  SSG
+ SG_ steering_button_4 : 23|1@1+ (1,0) [0|1] ""  SSG
+ SG_ steering_button_3 : 22|1@1+ (1,0) [0|1] ""  SSG
+ SG_ steering_button_2 : 21|1@1+ (1,0) [0|1] ""  SSG
+ SG_ steering_button_1 : 20|1@1+ (1,0) [0|1] ""  SSG
+
+BO_ 850 Hexagon_Heading2: 3 Vector__XXX
+ SG_ Heading : 0|19@1+ (0.001,0) [0|524.287] "deg" Vector__XXX
+
+BO_ 849 Hexagon_Bestvel: 5 Vector__XXX
+ SG_ Horizontal_speed : 0|16@1+ (0.001,0) [0|65.535] "m/s" Vector__XXX
+ SG_ Track_over_ground : 16|24@1+ (2.2E-005,0) [0|369.09873] "deg" Vector__XXX
+
+BO_ 848 Hexagon_Bestpos: 8 Vector__XXX
+ SG_ Longitude : 33|31@1+ (1.2E-008,0) [0|25.769803764] "deg" Vector__XXX
+ SG_ Latitude : 0|33@1+ (1.2E-009,45) [45|55.3079215092] "deg" Vector__XXX
+
+BO_ 625 DVDC_values: 5 TCU
+ SG_ VDC_Yaw_Control_P : 32|8@1+ (25,0) [0|6375] "" Vector__XXX
+ SG_ VDC_Torque_Demand : 23|16@0+ (0.0025,-78.9) [-78.9|84.9375] "Nm" Vector__XXX
+ SG_ v_x : 7|16@0+ (0.001,0) [0|65.535] "m/s"  Vector__XX
+
+BO_ 105 DV_Setpoints: 7 DV
+ SG_ DV_Torque_Demand : 47|16@0+ (0.003,-98.3025) [-98.3025|98.3025] "" Vector__XXX
+ SG_ DV_Torque_Active : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Xavier_AS_Finish : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Xavier_Control_heartbeat : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Xavier_Target_Wheel_Angle : 7|12@0+ (0.0002,-0.4095) [-0.4095|0.4095] "rad" Vector__XXX
+ SG_ Xavier_Target_speed : 23|16@0+ (0.001,0) [0|65.535] "m/s" Vector__XXX
+ SG_ Xavier_loopClosed : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Xavier_missionFinished : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 770 EPOS_MSG: 8 TCU
+ SG_ EPOS_INIT : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ EPOS_Target : 16|32@1- (1,0) [-2147483648|2147483647] "" Vector__XXX
+
+BO_ 771 EPOS_TxPDO_1: 8 EPOS
+ SG_ EPOS_Position_actual_value : 23|32@0- (1,0) [-65536|65536] "" Vector__XXX
+ SG_ EPOS_Statusword : 7|16@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ EPOS_Torque_actual_value : 55|16@0- (1,0) [-32768|32768] "" Vector__XXX
+
+BO_ 401 RES_PDO: 8 RES
+ SG_ RES_Bag_Switch : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RES_GO_Signal : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+
+
+
+CM_ BO_ 1264 "100 ms";
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","Event","CyclicIfActive","SpontanWithDelay","CyclicAndSpontan","CyclicAndSpontanWithDelay";
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_  "MultiplexExtEnabled" ENUM  "No","Yes";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "GenMsgSendType" "Cyclic";
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "MultiplexExtEnabled" "No";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "BusType" "CAN";
+BA_ "GenMsgCycleTime" BO_ 1264 100;
+

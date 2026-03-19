@@ -7,17 +7,10 @@
   "main": "dist-electron/main.js",
   "type": "module",
   "scripts": {
-    "dev": "npm run dev:desktop",
-    "dev:renderer": "vite build --watch",
-    "dev:electron:main": "esbuild electron/main.ts --bundle --platform=node --format=esm --outfile=dist-electron/main.js --external:electron --watch",
-    "dev:electron:preload": "esbuild electron/preload.ts --bundle --platform=node --format=cjs --outfile=dist-electron/preload.cjs --external:electron --watch",
-    "dev:electron": "concurrently -k \"npm:dev:electron:main\" \"npm:dev:electron:preload\"",
-    "dev:desktop": "concurrently -k \"npm:dev:renderer\" \"npm:dev:electron\" \"wait-on file:dist/index.html file:dist-electron/main.js file:dist-electron/preload.cjs && electron .\"",
-    "build": "npm run build:desktop",
-    "build:renderer": "vite build",
-    "build:electron": "esbuild electron/main.ts --bundle --platform=node --format=esm --outfile=dist-electron/main.js --external:electron && esbuild electron/preload.ts --bundle --platform=node --format=cjs --outfile=dist-electron/preload.cjs --external:electron",
-    "build:desktop": "npm run build:renderer && npm run build:electron && electron-builder",
-    "release": "npm run build && node scripts/publish-github.mjs"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "dist": "electron-builder --publish always",
+    "release": "npm run build && node release.cjs"
   },
   "build": {
     "appId": "com.frt.telemetry",
@@ -62,12 +55,10 @@
   "devDependencies": {
     "@types/node": "^24.4.0",
     "@preact/preset-vite": "^2.10.2",
-    "concurrently": "^9.2.1",
     "electron": "^36.2.1",
     "electron-builder": "^26.0.12",
-    "esbuild": "^0.25.10",
     "typescript": "^5.9.3",
     "vite": "^7.0.4",
-    "wait-on": "^8.0.5"
+    "vite-plugin-electron": "^0.29.0"
   }
 }

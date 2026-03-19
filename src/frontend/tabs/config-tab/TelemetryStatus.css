@@ -1,0 +1,42 @@
+.telemetry-status {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 14px;
+  padding: 5px;
+}
+
+.telemetry-controls {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	gap: 8px;
+}
+
+.telemetry-controls button,
+.telemetry-controls select,
+.telemetry-controls input {
+	height: 32px;
+	padding: 4px 8px;
+}
+
+.telemetry-state {
+	font-weight: 600;
+}
+
+.telemetry-meta {
+	opacity: 0.85;
+}
+
+.telemetry-warning {
+	color: #f7c65d;
+}
+
+.telemetry-error {
+	color: #ff7f7f;
+}
+
+.telemetry-counters {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 4px 12px;
+}

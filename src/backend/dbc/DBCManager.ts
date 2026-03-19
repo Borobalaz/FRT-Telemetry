@@ -1,8 +1,15 @@
-import { Dbc } from "candied";
+import { Can, Dbc } from "candied";
 import { dbcReader } from "candied/lib/filesystem/DbcWebFs";
 import { canSignals } from "../signals/CANsignals";
 import { appLogger } from "../app-logger/AppLogger";
 import { Message, Signal } from "candied/lib/dbc/Dbc";
+
+type DBCsChangedListener = () => void;
+
+export interface DecodedCANFrame {
+  fileName: string;
+  decodedSignals: Record<string, unknown>;
+}
 
 export interface IDBCManager {
   loadDBCFromString(contents: string, fileName: string): void;
@@ -11,18 +18,29 @@ export interface IDBCManager {
   getMessages(): any[];
   getMessageById(id: number): any | null;
   getAllSignals(): any[];
+  decodeCANFrame(id: number, data: Uint8Array): DecodedCANFrame | null;
   processCANFrame(id: number, data: Uint8Array): void;
   getSignalNames(): string[];
+  getLoadedFileNames(): string[];
+  subscribeLoadedDBCs(listener: DBCsChangedListener): () => void;
   printSummary(): void;
 }
 
 interface LoadedDBC {
   fileName: string;
   dbc: Dbc;
+  can: Can;
 }
 
 export class DBCManager implements IDBCManager {
   private dbcs: LoadedDBC[] = [];
+  private dbcsChangedListeners: Set<DBCsChangedListener> = new Set();
+
+  private notifyDBCsChanged() {
+    for (const listener of this.dbcsChangedListeners) {
+      listener();
+    }
+  }
 
   // -----------------------------------------------------
   //  Loaders
@@ -31,8 +49,11 @@ export class DBCManager implements IDBCManager {
   loadDBCFromString(contents: string, fileName: string): void {
     const dbc = new Dbc();
     dbc.load(contents);
+    const can = new Can();
+    can.database = dbc.data;
 
-    this.dbcs.push({ fileName, dbc });
+    this.dbcs.push({ fileName, dbc, can });
+    this.notifyDBCsChanged();
   }
 
   async loadDBCFile(file: File): Promise<void> {
@@ -42,8 +63,11 @@ export class DBCManager implements IDBCManager {
       dbcReader(file, (fileContent: string) => {
         try {
           dbc.load(fileContent);
+          const can = new Can();
+          can.database = dbc.data;
 
-          this.dbcs.push({ fileName: file.name, dbc });
+          this.dbcs.push({ fileName: file.name, dbc, can });
+          this.notifyDBCsChanged();
           resolve();
         } catch (err) {
           reject(err);
@@ -55,6 +79,7 @@ export class DBCManager implements IDBCManager {
   removeDBC(name: string) {
     this.dbcs = this.dbcs.filter(entry => entry.fileName !== name);
     appLogger.info(`Deleted DBC: ${name}`);
+    this.notifyDBCsChanged();
   }
 
   // -----------------------------------------------------
@@ -77,8 +102,12 @@ export class DBCManager implements IDBCManager {
 
   getMessageById(id: number): any | null {
     for (const { dbc } of this.dbcs) {
-      const msg = dbc.getMessageById(id);
-      if (msg) return msg;
+      try {
+        const msg = dbc.getMessageById(id);
+        if (msg) return msg;
+      } catch {
+        // Ignore missing IDs in this DBC and try the next one.
+      }
     }
     return null;
   }
@@ -100,18 +129,47 @@ export class DBCManager implements IDBCManager {
   getLoadedFileNames(): string[] {
     return this.dbcs.map(d => d.fileName);
   }
+
+  subscribeLoadedDBCs(listener: DBCsChangedListener): () => void {
+    this.dbcsChangedListeners.add(listener);
+    return () => {
+      this.dbcsChangedListeners.delete(listener);
+    };
+  }
   // -----------------------------------------------------
   //  CAN Decoding
   // -----------------------------------------------------
 
+  decodeCANFrame(id: number, data: Uint8Array): DecodedCANFrame | null {
+    const frame = {
+      id,
+      dlc: data.length,
+      isExtended: false,
+      payload: Array.from(data),
+    };
+
+    for (const { fileName, can } of this.dbcs) {
+      const decoded = can.decode(frame);
+      if (!decoded) {
+        continue;
+      }
+
+      const decodedSignals: Record<string, unknown> = {};
+      for (const [signalName, signal] of decoded.boundSignals) {
+        decodedSignals[signalName] = signal.value;
+      }
+
+      return { fileName, decodedSignals };
+    }
+
+    return null;
+  }
+
   processCANFrame(id: number, data: Uint8Array): void {
-    const msg = this.getMessageById(id);
-    if (!msg) return;
+    const decodedFrame = this.decodeCANFrame(id, data);
+    if (!decodedFrame) return;
 
-    // Candied decode
-    const decoded = msg.decode(data);
-
-    Object.entries(decoded).forEach(([signalName, value]) => {
+    Object.entries(decodedFrame.decodedSignals).forEach(([signalName, value]) => {
       canSignals.set(signalName, value);
     });
   }

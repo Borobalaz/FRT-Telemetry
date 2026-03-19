@@ -5,7 +5,7 @@ import { HistoryEntry } from "./SignalHistory";
 type Listener<T> = (value: T) => void;
 
 
-class CANSignals<T extends Record<string, any>> {
+export class CANSignals<T extends Record<string, any>> {
   private data: Partial<T> = {};
   private listeners: Map<keyof T, Set<Listener<any>>> = new Map();
 

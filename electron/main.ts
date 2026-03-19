@@ -1,6 +1,11 @@
 import { app, BrowserWindow, ipcMain, dialog } from 'electron';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -15,8 +20,14 @@ function createWindow(): void {
     },
   });
 
-  const rendererPath = join(__dirname, '..', 'dist', 'index.html');
-  mainWindow.loadFile(rendererPath);
+  // Load from Vite dev server in development, or from bundled files in production
+  if (process.env.VITE_DEV_SERVER_URL) {
+    mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
+    //mainWindow.webContents.openDevTools();
+  } else {
+    const rendererPath = join(__dirname, '..', 'dist', 'index.html');
+    mainWindow.loadFile(rendererPath);
+  }
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -38,6 +49,7 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
 
 ipcMain.handle('app:getRuntimeInfo', () => {
   return {
